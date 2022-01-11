@@ -1,24 +1,25 @@
 import React from 'react';
-import { TaskType } from './App';
+import {TaskType} from './App';
 
-type TaskPropsType = TaskType
+type TaskPropsType = TaskType & {
+    removeTask: (taskID: number) => void
+}
 
-/*type TaskType = {
-    id: number
-    title: string
-    isDone: boolean
-}*/
-
-
-const Task = (props: TaskPropsType) => {
-    return (
-        <div>
+const Task: React.FC<TaskPropsType> =
+    ({
+         id,
+         title,
+         isDone,
+         removeTask,
+     }) => {
+        return (
             <li>
-                <input type="checkbox" checked={props.isDone}/>
-                <span>{props.title}</span>
+                <input type="checkbox" checked={isDone}/>
+                <span>{title}</span>
+                <button onClick={() => removeTask(id)}>x</button>
             </li>
-        </div>
-    );
-};
+
+        );
+    };
 
 export default Task;
