@@ -18,7 +18,6 @@ export type FilterValueType = "all" | "active" | "completed"
 
 const App = () => {
 //BLL:
-    console.log(v1())
     const todoListTitle: string = "What to learn"
 
     const [tasks, setTasks] = useState<Array<TaskType>>([
@@ -57,11 +56,15 @@ const App = () => {
 
     const tasksForRender = getTasksForRender();
 
+    const changeTaskStatus = (taskID: string, isDone: boolean) => {
+        setTasks(tasks.map(t => t.id === taskID ? {...t, isDone} : t))//isDone: isDone сокращаем
+    }
+
 //UI:
     return (
         <div className="App">
-            <TodoList title={todoListTitle} tasks={tasksForRender} removeTask={removeTask} changeFilter={changeFilter}
-                      addTask={addTask}/>
+            <TodoList title={todoListTitle} tasks={tasksForRender} removeTask={removeTask} changeFilter={changeFilter} filter={filter}
+                      addTask={addTask} changeTaskStatus={changeTaskStatus}/>
         </div>
 
     );

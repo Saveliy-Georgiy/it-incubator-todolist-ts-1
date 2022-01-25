@@ -6,3 +6,17 @@
 .App > div {
   margin-right: 50px;
 }
+
+.is-done {
+  opacity: 0.5;
+}
+
+.active {
+  background-color: cadetblue;
+}
+
+.error {
+  background-color: #ffabc7;
+  border: 2px solid red;
+  outline: transparent;
+}

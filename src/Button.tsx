@@ -3,17 +3,21 @@ import React from 'react';
 type ButtonPropsType = {
     title: string
     onClickHandler: () => void
+    active: boolean
 }
 
 const Button: React.FC<ButtonPropsType> =
     ({
          title,
          onClickHandler,
+         active,
      }) => {
         return (
-            <div>
-                <button onClick={onClickHandler}>{title}</button>
-            </div>
+            <button
+                className={active ? "active" : ""}
+                onClick={onClickHandler}>
+                {title}
+            </button>
         );
     }
 export default Button;
